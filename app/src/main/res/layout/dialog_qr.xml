@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/dialog_qr_iv_qr"
+        android:paddingTop="52dp"
+        android:layout_centerHorizontal="true"
+        app:srcCompat="@drawable/ic_qr"
+        android:layout_width="168dp"
+        android:layout_height="168dp"/>
+
+    <TextView
+        android:textColor="@android:color/black"
+        android:gravity="center"
+        android:text="@string/dialog_qr_instructions"
+        android:layout_marginEnd="40dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="38dp"
+        android:layout_below="@id/dialog_qr_iv_qr"
+        android:id="@+id/dialog_qr_tv_instructions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="@dimen/base_margin"
+        android:layout_marginEnd="@dimen/base_margin"
+        android:layout_marginStart="@dimen/base_margin"
+        android:background="@drawable/bg_qr_dialog_btn_close"
+        android:id="@+id/dialog_qr_btn_close"
+        android:text="@string/dialog_qr_btn_close"
+        android:layout_below="@id/dialog_qr_tv_instructions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</RelativeLayout>
