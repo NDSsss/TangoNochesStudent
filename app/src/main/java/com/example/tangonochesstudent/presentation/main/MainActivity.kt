@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -30,6 +29,16 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(act_main_toolbar)
         initRecyclers()
         initBinds()
+        act_main_ticket_lessons_left.setOnClickListener {
+             val currLeft = act_main_ticket_lessons_left.text.toString().toInt()
+            val nextLeft = if(currLeft>1){
+                currLeft -1
+            } else{
+                5
+            }
+            act_main_ticket_lessons_left.text = nextLeft.toString()
+            initTicketBg(nextLeft)
+        }
     }
 
     private fun initRecyclers() {
@@ -72,4 +81,18 @@ class MainActivity : AppCompatActivity() {
             }
             else -> super.onOptionsItemSelected(item)
         }
+
+    private fun initTicketBg(left: Int) {
+        act_main_ticket.setImageDrawable(
+            resources.getDrawable(
+                when {
+                    left >= 4 -> R.drawable.ic_bg_ticket_green
+                    left in 2..3 -> R.drawable.ic_bg_ticket_orange
+                    left < 2 -> R.drawable.ic_bg_ticket_red
+                    else -> R.drawable.ic_bg_ticket_green
+                }
+            )
+        )
+
+    }
 }

@@ -29,14 +29,72 @@
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/act_main_ticket"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/base_margin"
                 android:layout_marginTop="@dimen/base_margin"
                 android:layout_marginEnd="@dimen/base_margin"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_bg_ticket_green" />
+
+            <TextView
+                android:id="@+id/act_main_ticket_tv_title"
+                android:layout_marginStart="@dimen/base_margin"
+                android:text="@string/ticket_title"
+                android:layout_marginTop="18dp"
+                app:layout_constraintStart_toStartOf="@id/act_main_ticket"
+                app:layout_constraintTop_toTopOf="@id/act_main_ticket"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:textSize="12sp"
+                android:textColor="@color/textColorWhiteHalf"
+                android:id="@+id/act_main_ticket_tv_until"
+                android:layout_marginStart="@dimen/base_margin"
+                android:text="@string/ticket_until"
+                android:layout_marginTop="14dp"
+                app:layout_constraintStart_toStartOf="@id/act_main_ticket"
+                app:layout_constraintTop_toBottomOf="@id/act_main_ticket_tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:textStyle="bold"
+                android:id="@+id/act_main_ticket_tv_until_date"
+                android:layout_marginStart="@dimen/base_margin"
+                android:text="@string/ticket_date"
+                android:layout_marginTop="4dp"
+                app:layout_constraintStart_toStartOf="@id/act_main_ticket"
+                app:layout_constraintTop_toBottomOf="@id/act_main_ticket_tv_until"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:textStyle="bold"
+                android:id="@+id/act_main_ticket_lessons_all"
+                android:text="/12"
+                android:textColor="@color/textColorWhiteHalf"
+                android:layout_marginEnd="18dp"
+                app:layout_constraintBottom_toBottomOf="@id/act_main_ticket"
+                app:layout_constraintTop_toTopOf="@id/act_main_ticket"
+                app:layout_constraintEnd_toEndOf="@id/act_main_ticket"
+                android:textSize="20sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:textStyle="bold"
+                android:id="@+id/act_main_ticket_lessons_left"
+                android:text="4"
+                app:layout_constraintBottom_toBottomOf="@id/act_main_ticket"
+                app:layout_constraintTop_toTopOf="@id/act_main_ticket"
+                app:layout_constraintEnd_toStartOf="@id/act_main_ticket_lessons_all"
+                android:textSize="32sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
             <TextView
                 android:id="@+id/act_main_tv_lesson_block_title"

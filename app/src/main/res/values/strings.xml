@@ -3,6 +3,10 @@
     <string name="lessons_block_title">Рассписаие уроков</string>
     <string name="events_block_title">Рассписаие мероприятий</string>
     <string name="see_all_items">ВСЕ</string>
+    <string name="ticket_title">Ваш абонимент</string>
+    <string name="ticket_until">Срок действия</string>
+    <string name="ticket_date">до 27.12.2019</string>
+    <string name="ticket_lessons_all">до 27.12.2019</string>
 
     <string name="menu_item_qr">QR</string>
     <string name="menu_item_logout">Выйти</string>
