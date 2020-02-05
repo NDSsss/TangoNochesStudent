@@ -46,6 +46,9 @@ dependencies {
     }
 
     implementation("com.jakewharton.rxrelay2:rxrelay:2.1.1")
+    implementation("me.dm7.barcodescanner:zxing:1.9.13")
+    implementation("me.dm7.barcodescanner:zbar:1.9.13")
+    implementation("org.conscrypt:conscrypt-android:2.2.1")
 
     implementation(ext["dagger"] as String)
     kapt(ext["daggerCompiler"] as String)

@@ -11,5 +11,9 @@
     <color name="colorEventTopEndGradient">#006950f8</color>
     <color name="colorAppAccent">#00a7f6</color>
 
+    <color name="btnEnabled">#00a8f3</color>
+    <color name="btnDisabled">#535179</color>
+    <color name="btnPressed">#6a57f4</color>
+
     <color name="textColorWhiteHalf">#88ffffff</color>
 </resources>
