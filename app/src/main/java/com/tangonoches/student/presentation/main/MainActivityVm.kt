@@ -82,25 +82,53 @@ class MainActivityVm @Inject constructor(
     val lessonsRelay = BehaviorRelay.create<List<Lesson>>()
     val eventsRelay = BehaviorRelay.create<List<Event>>()
     val ticketsRelay = BehaviorRelay.create<List<Ticket>>()
+    val refreshingRelay = BehaviorRelay.create<Boolean>()
 
     val loadDataEvent = BehaviorRelay.create<Unit>()
+    val refreshDataEvent = BehaviorRelay.create<Unit>()
 
     override fun createBinds() {
         Log.d("APP_TAG", "MainActivityVm createBinds")
-        binds.addAll(loadDataEvent.subscribe {
-            Log.d("APP_TAG", "MainActivityVm loadDataEvent.subscribe")
-            binds.add(mainRepository.getLessons().subscribe({ lessons ->
-                Log.d("APP_TAG","getLessons $lessons")
-                lessonsRelay.accept(lessons) },
-                { Log.d("APP_TAG", it.localizedMessage) }))
-            binds.add(mainRepository.getEvents().subscribe({ events ->
-                Log.d("APP_TAG","events $events")
-                eventsRelay.accept(events) },
-                { Log.d("APP_TAG", it.localizedMessage) }))
-            binds.add(mainRepository.getTickets(prefsStorage.barcodeId).subscribe({ tickets ->
-                Log.d("APP_TAG","tickets $tickets")
-                ticketsRelay.accept(tickets) },
-                { Log.d("APP_TAG", it.localizedMessage) }))
-        })
+        binds.addAll(
+            loadDataEvent.subscribe {
+                loadData()
+            },
+            refreshDataEvent.subscribe {
+                loadData()
+            }
+        )
+    }
+
+    private fun loadData() {
+        refreshingRelay.accept(true)
+        Log.d("APP_TAG", "MainActivityVm loadDataEvent.subscribe")
+        binds.add(
+            mainRepository.getLessons().subscribe(
+                { lessons ->
+                    Log.d("APP_TAG", "getLessons $lessons")
+                    refreshingRelay.accept(false)
+                    lessonsRelay.accept(lessons)
+                },
+                {
+                    refreshingRelay.accept(false)
+                    Log.d("APP_TAG", it.localizedMessage)
+                })
+        )
+        binds.add(
+            mainRepository.getEvents().subscribe(
+                { events ->
+                    Log.d("APP_TAG", "events $events")
+                    eventsRelay.accept(events)
+                },
+                { Log.d("APP_TAG", it.localizedMessage) })
+        )
+        binds.add(
+            mainRepository.getTickets(prefsStorage.barcodeId).subscribe(
+                { tickets ->
+                    Log.d("APP_TAG", "tickets $tickets")
+                    ticketsRelay.accept(tickets)
+                },
+                { Log.d("APP_TAG", it.localizedMessage) })
+        )
     }
 }

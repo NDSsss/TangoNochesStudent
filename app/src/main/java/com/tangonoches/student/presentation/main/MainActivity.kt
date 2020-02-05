@@ -21,7 +21,12 @@ class MainActivity : BaseVmActivity<MainActivityVm>() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(act_main_toolbar)
+        initsSwipetoRefersh()
         initRecyclers()
+    }
+
+    private fun initsSwipetoRefersh(){
+        act_main_swtr.setOnRefreshListener { vm.refreshDataEvent.accept(Unit) }
     }
 
     private fun initRecyclers() {
@@ -52,6 +57,9 @@ class MainActivity : BaseVmActivity<MainActivityVm>() {
             },
             vm.ticketsRelay.subscribe {
                 ticketsAdapter?.tickets = it
+            },
+            vm.refreshingRelay.subscribe {
+                act_main_swtr.isRefreshing = it
             }
         )
         vm.loadDataEvent.accept(Unit)
