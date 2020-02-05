@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">TangoNoches</string>
+
+    <string name="login_scan">Отсканировать абонимент</string>
+
     <string name="lessons_block_title">Рассписаие уроков</string>
     <string name="events_block_title">Рассписаие мероприятий</string>
     <string name="see_all_items">ВСЕ</string>
