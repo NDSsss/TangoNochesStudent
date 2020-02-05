@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.tangonoches.student.R
@@ -92,9 +93,11 @@ class LoginActivity : BaseVmActivity<LoginVm>(), ZBarScannerView.ResultHandler {
         // If you would like to resume scanning, call this method below:
 //        activity_login_zbar.resumeCameraPreview(this)
         try {
-            val barcodeContent = rawResult?.contents?.toLong()?:-1
+            val barcodeContent = rawResult?.contents?.toLong() ?: -1
             if (barcodeContent > 0) {
-                vm.prefsStorage.barcodeId = rawResult?.contents?.toLong() ?: 1L
+                vm.prefsStorage.barcodeId = barcodeContent
+                Log.d("BARCODE_ID", "saved barcode $barcodeContent")
+                openMain()
             } else {
                 Toast.makeText(
                     this,
@@ -103,7 +106,7 @@ class LoginActivity : BaseVmActivity<LoginVm>(), ZBarScannerView.ResultHandler {
                 ).show()
                 activity_login_zbar.resumeCameraPreview(this)
             }
-        } catch (e: NumberFormatException){
+        } catch (e: NumberFormatException) {
             Toast.makeText(
                 this,
                 "Неверный формат, попробуйте еще",
@@ -111,8 +114,6 @@ class LoginActivity : BaseVmActivity<LoginVm>(), ZBarScannerView.ResultHandler {
             ).show()
             activity_login_zbar.resumeCameraPreview(this)
         }
-
-        openMain()
     }
 
     fun openMain() {
