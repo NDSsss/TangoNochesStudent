@@ -12,6 +12,16 @@
         <item name="buttonStyle">@style/ButtonsStyle</item>
     </style>
 
+    <style name="AlertDialog.AppCompat.Custom">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@color/colorPrimary</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="actionMenuTextColor">@color/colorAppAccent</item>
+        <item name="buttonStyle">@style/ButtonsStyle</item>
+    </style>
+
     <style name="ButtonsStyle" parent="Widget.AppCompat.Button.Borderless.Colored">
         <item name="android:background">@drawable/bg_btn</item>
         <item name="android:paddingStart">@dimen/base_margin_half</item>

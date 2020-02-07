@@ -3,16 +3,24 @@
 
     <string name="login_scan">Отсканировать абонимент</string>
 
-    <string name="lessons_block_title">Рассписаие уроков</string>
-    <string name="events_block_title">Рассписаие мероприятий</string>
+    <string name="lessons_block_title">Расписание уроков</string>
+    <string name="events_block_title">Расписание мероприятий</string>
     <string name="see_all_items">ВСЕ</string>
-    <string name="ticket_title">Ваш абонимент</string>
+    <string name="ticket_title">Ваш абонемент</string>
     <string name="ticket_until">Срок действия</string>
     <string name="ticket_date">до 27.12.2019</string>
     <string name="ticket_lessons_all">до 27.12.2019</string>
 
+    <string name="login_info">Введите код (ID) на вашей клубной карте</string>
+    <string name="login_id_hint">Ваш код (ID)</string>
+    <string name="login_login">Войти</string>
+
     <string name="menu_item_qr">QR</string>
     <string name="menu_item_logout">Выйти</string>
+
+    <string name="dialog_logout_title">Вы уверены, что хотите сменить абонемент?</string>
+    <string name="dialog_logout_confirm">Сменить</string>
+    <string name="dialog_logout_decline">Отмена</string>
 
     <string name="dialog_qr_instructions">QR-код для чего нибудь важного наверное пусть будет так вот</string>
     <string name="dialog_qr_btn_close">Закрыть</string>

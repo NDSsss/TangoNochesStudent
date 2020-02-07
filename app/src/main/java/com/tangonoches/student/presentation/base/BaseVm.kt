@@ -7,7 +7,7 @@ import io.reactivex.disposables.CompositeDisposable
 abstract class BaseVm : ViewModel() {
     protected val binds = CompositeDisposable()
 
-    public fun viewCreated(){
+    open public fun viewCreated(){
         Log.d("APP_TAG", "BaseVm viewCreated")
         createBinds()
     }
