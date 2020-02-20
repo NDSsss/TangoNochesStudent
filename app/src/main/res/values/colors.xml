@@ -5,6 +5,8 @@
     <color name="colorAccent">#ff49a8</color>
     <color name="colorLessonStartGradient">#6139b2</color>
     <color name="colorLessonEndGradient">#8a51f9</color>
+    <color name="colorAllEventStartGradient">#423beb</color>
+    <color name="colorAllEventEndGradient">#6a57f4</color>
     <color name="colorEventBottomStartGradient">#423beb</color>
     <color name="colorEventBottomEndGradient">#6a57f4</color>
     <color name="colorEventTopStartGradient">#6650f4</color>

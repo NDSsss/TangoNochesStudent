@@ -7,10 +7,9 @@
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/dialog_qr_iv_qr"
         android:paddingTop="52dp"
-        android:layout_centerHorizontal="true"
-        app:srcCompat="@drawable/ic_qr"
-        android:layout_width="168dp"
-        android:layout_height="168dp"/>
+        android:scaleType="fitCenter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
     <TextView
         android:textColor="@android:color/black"

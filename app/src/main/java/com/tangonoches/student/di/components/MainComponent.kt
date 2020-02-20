@@ -14,7 +14,8 @@ import javax.inject.Singleton
         DataSourceModule::class,
         RepositoryModule::class,
         PrefsModule::class,
-        VmModule::class
+        VmModule::class,
+        UtilsModule::class
     ]
 )
 @Singleton

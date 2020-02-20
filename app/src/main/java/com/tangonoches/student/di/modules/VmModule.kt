@@ -4,6 +4,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.tangonoches.student.di.vm.VmFactory
 import com.tangonoches.student.di.vm.VmKeyName
+import com.tangonoches.student.presentation.allEvents.AllEventsActivityVm
+import com.tangonoches.student.presentation.allLessons.AllLessonsActivityVm
 import com.tangonoches.student.presentation.login.LoginVm
 import com.tangonoches.student.presentation.loginScan.LoginScanVm
 import com.tangonoches.student.presentation.main.MainActivityVm
@@ -19,6 +21,16 @@ interface VmModule {
     @IntoMap
     @VmKeyName(MainActivityVm::class)
     fun bindMainAvtivityVm(viewModel: MainActivityVm): ViewModel
+
+    @Binds
+    @IntoMap
+    @VmKeyName(AllLessonsActivityVm::class)
+    fun bindAllLessonsActivityVm(viewModel: AllLessonsActivityVm): ViewModel
+
+    @Binds
+    @IntoMap
+    @VmKeyName(AllEventsActivityVm::class)
+    fun bindAllEventsActivityVm(viewModel: AllEventsActivityVm): ViewModel
 
     @Binds
     @IntoMap

@@ -1,17 +1,23 @@
 package com.tangonoches.student.presentation.main
 
 import android.content.Intent
+import android.graphics.Bitmap
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.jakewharton.rxbinding2.view.clicks
 import com.tangonoches.student.R
+import com.tangonoches.student.presentation.allEvents.AllEventsActivity
+import com.tangonoches.student.presentation.allLessons.AllLessonsActivity
 import com.tangonoches.student.presentation.base.BaseVmActivity
 import com.tangonoches.student.presentation.login.LoginActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.dialog_logout.view.*
+import kotlinx.android.synthetic.main.dialog_qr.view.*
 
 class MainActivity : BaseVmActivity<MainActivityVm>() {
     override fun getVmClass(): Class<MainActivityVm> = MainActivityVm::class.java
@@ -24,11 +30,11 @@ class MainActivity : BaseVmActivity<MainActivityVm>() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(act_main_toolbar)
-        initsSwipetoRefersh()
+        initSwipeToRefresh()
         initRecyclers()
     }
 
-    private fun initsSwipetoRefersh() {
+    private fun initSwipeToRefresh() {
         act_main_swtr.setOnRefreshListener { vm.refreshDataEvent.accept(Unit) }
     }
 
@@ -63,6 +69,18 @@ class MainActivity : BaseVmActivity<MainActivityVm>() {
             },
             vm.refreshingRelay.subscribe {
                 act_main_swtr.isRefreshing = it
+            },
+            act_main_btn_show_qr.clicks().subscribe {
+                vm.showBarcodeEvent.accept(Unit)
+            },
+            vm.barcodeRelay.subscribe {
+                openBarcode(it)
+            },
+            act_main_tv_lesson_block_all.clicks().subscribe {
+                openAllLessons()
+            },
+            act_main_tv_events_block_all.clicks().subscribe {
+                openAllEvents()
             }
         )
         vm.loadDataEvent.accept(Unit)
@@ -75,7 +93,7 @@ class MainActivity : BaseVmActivity<MainActivityVm>() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean =
         when (item.itemId) {
-            R.id.menu_main_qr -> {
+            R.id.menu_main_logout -> {
                 val dialogBuilder = AlertDialog.Builder(this)
                 val dialogContent =
                     LayoutInflater.from(this).inflate(R.layout.dialog_logout, null, false)
@@ -92,5 +110,22 @@ class MainActivity : BaseVmActivity<MainActivityVm>() {
         vm.prefsStorage.barcodeId = 0
         startActivity(Intent(this, LoginActivity::class.java))
         finish()
+    }
+
+    private fun openBarcode(barcodeImage: Bitmap) {
+        val dialog = BottomSheetDialog(this)
+        val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_qr, null, false)
+        dialogView.dialog_qr_btn_close.setOnClickListener { dialog.dismiss() }
+        dialogView.dialog_qr_iv_qr.setImageBitmap(barcodeImage)
+        dialog.setContentView(dialogView)
+        dialog.show()
+    }
+
+    private fun openAllLessons() {
+        startActivity(Intent(this, AllLessonsActivity::class.java))
+    }
+
+    private fun openAllEvents() {
+        startActivity(Intent(this, AllEventsActivity::class.java))
     }
 }

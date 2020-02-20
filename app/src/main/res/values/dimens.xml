@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="base_margin">16dp</dimen>
+    <dimen name="base_margin_half_and_half">12dp</dimen>
     <dimen name="base_margin_half">8dp</dimen>
+    <dimen name="base_margin_half_no_half">4dp</dimen>
     <dimen name="vertical_spacing_big">24dp</dimen>
+
+    <dimen name="margin_divider_top">28dp</dimen>
+    <dimen name="margin_divider_bot">6dp</dimen>
 
     <dimen name="btn_radius">8dp</dimen>
 </resources>
