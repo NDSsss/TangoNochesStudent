@@ -22,6 +22,6 @@
     <string name="dialog_logout_confirm">Сменить</string>
     <string name="dialog_logout_decline">Отмена</string>
 
-    <string name="dialog_qr_instructions">Штрих-код необходим для списывания занятий преподавателем или для оплаты</string>
+    <string name="dialog_qr_instructions">Штрих-код необходим для списывания занятий преподавателем</string>
     <string name="dialog_qr_btn_close">Закрыть</string>
 </resources>
