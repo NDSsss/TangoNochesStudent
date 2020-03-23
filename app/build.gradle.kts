@@ -25,9 +25,42 @@ android{
         targetCompatibility = ext["javaVer"] as JavaVersion
     }
 
+    signingConfigs {
+        create("release") {
+            storeFile = file("${project.projectDir.absolutePath}/../tango_noches_student.jks")
+            storePassword = "Parolmoi1997"
+            keyAlias = "tango_noches_alias"
+            keyPassword = "Parolmoi1997"
+        }
+    }
+
     buildTypes {
-        getByName("release"){
+        getByName("debug"){
             isMinifyEnabled = false
+            applicationIdSuffix = ".debug"
+            versionNameSuffix = "-debug"
+            signingConfig = signingConfigs.getByName("release")
+        }
+        getByName("release"){
+            isMinifyEnabled = true
+        }
+    }
+
+    flavorDimensions("mode")
+
+    productFlavors {
+        create("stage") {
+            setDimension("mode")
+            applicationId = "com.tangonoches.student-stage"
+            versionNameSuffix = "-stage"
+            signingConfig = signingConfigs.getByName("release")
+
+        }
+
+        create("prod") {
+            setDimension("mode")
+            applicationId = "com.tangonoches.student"
+            signingConfig = signingConfigs.getByName("release")
         }
     }
 }
