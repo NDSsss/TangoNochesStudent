@@ -22,11 +22,15 @@ fun EventAnnounceDto.toEvent(): Event {
     val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
     val startDate = dateFormat.parse(this.start_date)
     val endDate = dateFormat.parse(this.end_date)
-    val wantedStartDate = SimpleDateFormat("dd MMMM HH:mm")
+    val wantedStartDate = SimpleDateFormat("dd MMMM, E HH:mm")
     val wantedEndDate = SimpleDateFormat("HH:mm")
     val startDateString = wantedStartDate.format(startDate)
     val endDateString = wantedEndDate.format(endDate)
-    val resultDateString = startDateString.plus(" - ").plus(endDateString)
+    val resultDateString = if (endDate.after(Calendar.getInstance().time)) {
+        startDateString.plus(" - ").plus(endDateString)
+    } else {
+        null
+    }
     return Event(
         date = resultDateString,
         name = this.name,

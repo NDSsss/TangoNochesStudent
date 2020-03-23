@@ -49,7 +49,7 @@ fun Date.dayIsNotEqual(secondDate: Date): Boolean {
 }
 
 fun Date.toAllItemsDividerFormat(): String {
-    val wantedFormat = SimpleDateFormat("dd, MMMM")
+    val wantedFormat = SimpleDateFormat("dd MMMM, EEEE")
     return wantedFormat.format(this)
 }
 

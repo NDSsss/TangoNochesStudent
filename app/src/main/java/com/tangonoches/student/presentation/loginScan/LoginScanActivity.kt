@@ -84,7 +84,7 @@ class LoginScanActivity : BaseVmActivity<LoginScanVm>(), ZBarScannerView.ResultH
 
     override fun handleResult(rawResult: Result?) {
         var result = rawResult?.contents + rawResult?.barcodeFormat?.name
-        Toast.makeText(this, result, Toast.LENGTH_LONG).show()
+//        Toast.makeText(this, result, Toast.LENGTH_LONG).show()
 
         // If you would like to resume scanning, call this method below:
 //        activity_login_zbar.resumeCameraPreview(this)
@@ -114,5 +114,6 @@ class LoginScanActivity : BaseVmActivity<LoginScanVm>(), ZBarScannerView.ResultH
         val resultIntent = Intent()
         resultIntent.putExtra(SCAN_RESULT_ID, id)
         setResult(SCAN_SUCCESS_RESULT, resultIntent)
+        finish()
     }
 }

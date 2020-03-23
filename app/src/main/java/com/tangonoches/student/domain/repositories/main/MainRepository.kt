@@ -13,10 +13,14 @@ class MainRepository(
     private val mainDatasource: IMainDatasource
 ) : IMainRepository {
     override fun getLessons(): Single<List<Lesson>> =
-        mainDatasource.getLessonAnnounces().map { response -> response.data.map { it.toLesson() } }
+        mainDatasource.getLessonAnnounces().map { response ->
+            response.data.map { it.toLesson() }.filter { it.date != null }
+        }
 
     override fun getEvents(): Single<List<Event>> =
-        mainDatasource.getEventAnnounces().map { response -> response.data.map { it.toEvent() } }
+        mainDatasource.getEventAnnounces().map { response ->
+            response.data.map { it.toEvent() }.filter { it.date != null }
+        }
 
     override fun getTickets(barcodeId: Long): Single<List<Ticket>> =
         mainDatasource.getTickets(barcodeId).map { response -> response.data.map { item -> item.toTicket() } }

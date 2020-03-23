@@ -3,6 +3,7 @@ package com.tangonoches.student.data.dto
 import com.tangonoches.student.data.models.AllLessonsModel
 import com.tangonoches.student.data.models.Lesson
 import java.text.SimpleDateFormat
+import java.util.*
 
 data class LessonAnnounceDto(
     val address: String = "",
@@ -23,8 +24,12 @@ fun LessonAnnounceDto.toLesson(): Lesson {
     val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
     val startDate = dateFormat.parse(this.start_date)
     val endDate = dateFormat.parse(this.end_date)
-    val wantedDateFormat = SimpleDateFormat("EEEE dd.MM")
-    val dateString = wantedDateFormat.format(startDate).capitalize()
+    val wantedDateFormat = SimpleDateFormat("EEEE, dd.MM")
+    val dateString: String? = if(endDate.after(Calendar.getInstance().time)) {
+        wantedDateFormat.format(startDate).capitalize()
+    } else {
+        null
+    }
     val timeFormat = SimpleDateFormat("HH:mm")
     val timeString = timeFormat.format(startDate).plus(" - ").plus(timeFormat.format(endDate))
     return Lesson(

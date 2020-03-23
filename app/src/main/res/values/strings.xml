@@ -1,17 +1,17 @@
 <resources>
     <string name="app_name">TangoNoches</string>
 
-    <string name="login_scan">Отсканировать абонимент</string>
+    <string name="login_scan">Отсканировать абонемент</string>
 
     <string name="lessons_block_title">Расписание уроков</string>
     <string name="events_block_title">Расписание мероприятий</string>
     <string name="see_all_items">ВСЕ</string>
-    <string name="ticket_title">Ваш абонемент</string>
-    <string name="ticket_until">Срок действия</string>
+    <string name="ticket_title">Абонемент для </string>
+    <string name="ticket_until">Срок действия до</string>
     <string name="ticket_date">до 27.12.2019</string>
     <string name="ticket_lessons_all">до 27.12.2019</string>
 
-    <string name="login_info">Введите код (ID) на вашей клубной карте</string>
+    <string name="login_info">Введите код (ID) на вашей клубной карте, или отсканируйте штрихкод, нажав на кнопку справа</string>
     <string name="login_id_hint">Ваш код (ID)</string>
     <string name="login_login">Войти</string>
 
