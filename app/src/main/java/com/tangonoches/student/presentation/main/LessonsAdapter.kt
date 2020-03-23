@@ -3,9 +3,11 @@ package com.tangonoches.student.presentation.main
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.tangonoches.student.R
 import com.tangonoches.student.data.models.Lesson
+import com.tangonoches.student.data.models.getLessonBackgroundByGroup
 import kotlinx.android.synthetic.main.item_lesson.view.*
 
 class LessonsAdapter : RecyclerView.Adapter<LessonsVh>() {
@@ -22,12 +24,16 @@ class LessonsAdapter : RecyclerView.Adapter<LessonsVh>() {
     override fun getItemCount(): Int = lessons.size
 
     override fun onBindViewHolder(holder: LessonsVh, position: Int) {
-        val lesson = lessons[position]
-        holder.itemView.item_lesson_tv_date.text = lesson.date
-        holder.itemView.item_lesson_tv_time.text = lesson.time
-        holder.itemView.item_lesson_tv_name.text = lesson.name
-        holder.itemView.item_lesson_tv_address.text = lesson.address
+        holder.bind(lessons[position])
     }
 }
 
-class LessonsVh(view: View) : RecyclerView.ViewHolder(view)
+class LessonsVh(view: View) : RecyclerView.ViewHolder(view) {
+    fun bind(lesson: Lesson) {
+        itemView.item_lesson_tv_date.text = lesson.date
+        itemView.item_lesson_tv_time.text = lesson.time
+        itemView.item_lesson_tv_name.text = lesson.name
+        itemView.item_lesson_tv_address.text = lesson.address
+        itemView.item_lesson_cl_bg.background = ContextCompat.getDrawable(itemView.context, getLessonBackgroundByGroup(lesson.groupId))
+    }
+}

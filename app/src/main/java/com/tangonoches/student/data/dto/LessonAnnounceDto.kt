@@ -12,7 +12,7 @@ data class LessonAnnounceDto(
     val end_date: String = "",
     val extra_info: String = "",
     val group: Group = Group(),
-    val group_id: Int = 0,
+    val group_id: Long = -1L,
     val id: Int = 0,
     val is_active: Boolean = false,
     val name: String = "",
@@ -36,7 +36,8 @@ fun LessonAnnounceDto.toLesson(): Lesson {
         date = dateString,
         time = timeString,
         name = this.name,
-        address = this.address
+        address = this.address,
+        groupId = group_id
     )
 }
 
@@ -54,7 +55,7 @@ fun LessonAnnounceDto.toAllLessonModel(): AllLessonsModel {
         date = timeString,
         name = this.name,
         address = this.address,
-        rawStartDate = startDate
-
+        rawStartDate = startDate,
+        groupId = group_id
     )
 }

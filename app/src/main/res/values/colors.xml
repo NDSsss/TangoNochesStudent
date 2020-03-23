@@ -14,6 +14,17 @@
     <color name="colorAppAccent">#00a7f6</color>
     <color name="loginInfo">#7a79a5</color>
 
+    <color name="colorLesson1StartGradient">#1c64d8</color>
+    <color name="colorLesson1EndGradient">#5198f9</color>
+    <color name="colorLesson2StartGradient">#6139b2</color>
+    <color name="colorLesson2EndGradient">#8a51f9</color>
+    <color name="colorLesson3StartGradient">#a939b2</color>
+    <color name="colorLesson3EndGradient">#e651f9</color>
+    <color name="colorLesson4StartGradient">#c610d5</color>
+    <color name="colorLesson4EndGradient">#8212c9</color>
+    <color name="colorLesson5StartGradient">#01dbd3</color>
+    <color name="colorLesson5EndGradient">#12adc9</color>
+
     <color name="btnEnabled">#00a8f3</color>
     <color name="btnDisabled">#535179</color>
     <color name="btnPressed">#6a57f4</color>

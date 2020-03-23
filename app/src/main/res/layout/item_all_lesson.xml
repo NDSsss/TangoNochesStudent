@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/base_margin_half"
+    android:id="@+id/item_all_lesson_cl_background"
     android:background="@drawable/bg_lesson"
     android:orientation="vertical">
 

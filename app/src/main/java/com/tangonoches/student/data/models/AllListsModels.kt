@@ -13,7 +13,7 @@ open class BaseAllListsItem(val date: String) {
 class AllEventsModel(date: String, val name: String, val address: String, val rawStartDate: Date) :
     BaseAllListsItem(date)
 
-class AllLessonsModel(date: String, val name: String, val address: String, val rawStartDate: Date) :
+class AllLessonsModel(date: String, val name: String, val address: String, val rawStartDate: Date, val groupId:Long) :
     BaseAllListsItem(date)
 
 class AllItemsDividerModel(date: String) : BaseAllListsItem(date)
