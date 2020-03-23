@@ -9,8 +9,8 @@ class PrefsStorage(private val context: Context) : IPrefsStorage {
     override var barcodeId: Long
         get() = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)?.getLong(
             BARCODDE_ID,
-            1
-        ) ?: 1
+            -1
+        ) ?: -1
         set(value) {
             context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)?.edit()
                 ?.putLong(BARCODDE_ID, value)?.apply()

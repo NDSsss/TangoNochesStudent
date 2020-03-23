@@ -37,29 +37,9 @@ android{
     buildTypes {
         getByName("debug"){
             isMinifyEnabled = false
-            applicationIdSuffix = ".debug"
-            versionNameSuffix = "-debug"
-            signingConfig = signingConfigs.getByName("release")
         }
         getByName("release"){
-            isMinifyEnabled = true
-        }
-    }
-
-    flavorDimensions("mode")
-
-    productFlavors {
-        create("stage") {
-            setDimension("mode")
-            applicationId = "com.tangonoches.student-stage"
-            versionNameSuffix = "-stage"
-            signingConfig = signingConfigs.getByName("release")
-
-        }
-
-        create("prod") {
-            setDimension("mode")
-            applicationId = "com.tangonoches.student"
+            isMinifyEnabled = false
             signingConfig = signingConfigs.getByName("release")
         }
     }
