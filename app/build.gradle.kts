@@ -35,12 +35,19 @@ android{
     }
 
     buildTypes {
+        val appName = "TangoNoches"
         getByName("debug"){
             isMinifyEnabled = false
+            applicationIdSuffix = ".debug"
+            versionNameSuffix = "-debug"
+            buildConfigField("String", "BASE_URL", "\"http://tangonoches.famedev-stage.ru/api/\"")
+            resValue("string", "app_name_build", "$appName Stage")
         }
         getByName("release"){
             isMinifyEnabled = false
             signingConfig = signingConfigs.getByName("release")
+            buildConfigField("String", "BASE_URL", "\"http://tangonoches.famedev.ru/api/\"")
+            resValue("string", "app_name_build", appName)
         }
     }
 }

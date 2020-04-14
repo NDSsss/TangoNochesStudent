@@ -1,6 +1,7 @@
 package com.tangonoches.student.di.modules
 
 import android.util.Log
+import com.tangonoches.student.BuildConfig
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -29,7 +30,7 @@ class NetModule {
     @Singleton
     fun providesRetrofit(okkClient: OkHttpClient): Retrofit =
         Retrofit.Builder()
-            .baseUrl("http://tangonoches.famedev.ru/api/")
+            .baseUrl(BuildConfig.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .client(okkClient)
