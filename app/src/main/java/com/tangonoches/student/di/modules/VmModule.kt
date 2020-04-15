@@ -9,6 +9,7 @@ import com.tangonoches.student.presentation.allLessons.AllLessonsActivityVm
 import com.tangonoches.student.presentation.login.LoginVm
 import com.tangonoches.student.presentation.loginScan.LoginScanVm
 import com.tangonoches.student.presentation.main.MainActivityVm
+import com.tangonoches.student.presentation.pointsInfo.PointsInfoActivityVm
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -41,6 +42,11 @@ interface VmModule {
     @IntoMap
     @VmKeyName(LoginVm::class)
     fun bindLoginAvtivityVm(viewModel: LoginVm): ViewModel
+
+    @Binds
+    @IntoMap
+    @VmKeyName(PointsInfoActivityVm::class)
+    fun bindPointsInfoActivityVm(viewModel: PointsInfoActivityVm): ViewModel
 
     @Binds
     @Singleton

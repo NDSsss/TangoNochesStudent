@@ -19,6 +19,7 @@
         <activity android:name=".presentation.main.MainActivity"></activity>
         <activity android:name=".presentation.allLessons.AllLessonsActivity"></activity>
         <activity android:name=".presentation.allEvents.AllEventsActivity"></activity>
+        <activity android:name=".presentation.pointsInfo.PointsInfoActivity"></activity>
         <activity android:name=".presentation.login.LoginActivity"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>

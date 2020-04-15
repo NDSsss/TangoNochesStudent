@@ -5,7 +5,6 @@
     android:id="@+id/item_lesson_cl_bg"
     android:layout_width="280dp"
     android:layout_height="137dp"
-    android:layout_marginStart="@dimen/base_margin_half"
     android:layout_marginEnd="@dimen/base_margin_half"
     android:background="@drawable/bg_lesson"
     android:orientation="vertical">

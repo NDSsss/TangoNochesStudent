@@ -4,12 +4,22 @@
     <string name="login_scan">Отсканировать абонемент</string>
 
     <string name="lessons_block_title">Расписание уроков</string>
+    <string name="lessons_no_events">Ближайших уроков нет</string>
     <string name="events_block_title">Расписание мероприятий</string>
+    <string name="events_no_events">Ближайших мероприятий нет</string>
     <string name="see_all_items">ВСЕ</string>
     <string name="ticket_title">Абонемент для </string>
     <string name="ticket_until">Срок действия до</string>
     <string name="ticket_date">до 27.12.2019</string>
     <string name="ticket_lessons_all">до 27.12.2019</string>
+    <string name="points_title">У Вас есть</string>
+    <string name="points_placeholder">У Вас есть</string>
+    <plurals name="points_value">
+        <item quantity="one">%d бал</item>
+        <item quantity="few">%d балла</item>
+        <item quantity="many">%d баллов</item>
+        <item quantity="other">%d баллов</item>
+    </plurals>
 
     <string name="login_info">Введите код (ID) на вашей клубной карте, или отсканируйте штрихкод, нажав на кнопку справа</string>
     <string name="login_id_hint">Ваш код (ID)</string>
@@ -24,4 +34,7 @@
 
     <string name="dialog_qr_instructions">Штрих-код необходим для списывания занятий преподавателем</string>
     <string name="dialog_qr_btn_close">Закрыть</string>
+
+    <string name="points_info_title">Информация о баллах</string>
+    <string name="points_info">Some info</string>
 </resources>

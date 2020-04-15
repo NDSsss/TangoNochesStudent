@@ -25,9 +25,16 @@
     <color name="colorLesson5StartGradient">#01dbd3</color>
     <color name="colorLesson5EndGradient">#12adc9</color>
 
+    <color name="colorPointsStartGradient">#45457c</color>
+    <color name="colorPointsEndGradient">#6a6abe</color>
+
+    <color name="colorNoEvents">#373758</color>
+    <color name="textColorNoEvents">#7a79a5</color>
+
     <color name="btnEnabled">#00a8f3</color>
     <color name="btnDisabled">#535179</color>
     <color name="btnPressed">#6a57f4</color>
 
     <color name="textColorWhiteHalf">#88ffffff</color>
+    <color name="textColorWhite">#ffffff</color>
 </resources>

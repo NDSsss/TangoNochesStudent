@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -15,6 +16,7 @@ import com.tangonoches.student.presentation.allEvents.AllEventsActivity
 import com.tangonoches.student.presentation.allLessons.AllLessonsActivity
 import com.tangonoches.student.presentation.base.BaseVmActivity
 import com.tangonoches.student.presentation.login.LoginActivity
+import com.tangonoches.student.presentation.pointsInfo.PointsInfoActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.dialog_logout.view.*
 import kotlinx.android.synthetic.main.dialog_qr.view.*
@@ -59,10 +61,28 @@ class MainActivity : BaseVmActivity<MainActivityVm>() {
         super.createVmBinds()
         vmBinds.addAll(
             vm.lessonsRelay.subscribe {
-                lessonsAdapter?.lessons = it
+                if(it.isNotEmpty()) {
+                    act_main_cl_no_lessons.visibility = View.GONE
+                    act_main_rv_lessons.visibility = View.VISIBLE
+                    act_main_tv_lesson_block_all.visibility = View.VISIBLE
+                    lessonsAdapter?.lessons = it
+                } else {
+                    act_main_cl_no_lessons.visibility = View.VISIBLE
+                    act_main_rv_lessons.visibility = View.GONE
+                    act_main_tv_lesson_block_all.visibility = View.GONE
+                }
             },
             vm.eventsRelay.subscribe {
-                eventsAdapter?.events = it
+                if(it.isNotEmpty()) {
+                    act_main_cl_no_events.visibility = View.GONE
+                    act_main_rv_events.visibility = View.VISIBLE
+                    act_main_tv_events_block_all.visibility = View.VISIBLE
+                    eventsAdapter?.events = it
+                } else {
+                    act_main_cl_no_events.visibility = View.VISIBLE
+                    act_main_rv_events.visibility = View.GONE
+                    act_main_tv_events_block_all.visibility = View.GONE
+                }
             },
             vm.ticketsRelay.subscribe {
                 ticketsAdapter?.tickets = it
@@ -70,8 +90,17 @@ class MainActivity : BaseVmActivity<MainActivityVm>() {
             vm.refreshingRelay.subscribe {
                 act_main_swtr.isRefreshing = it
             },
+            vm.pointsRelay.subscribe {
+                initPoints(it)
+            },
             act_main_btn_show_qr.clicks().subscribe {
                 vm.showBarcodeEvent.accept(Unit)
+            },
+            act_main_iv_points_info.clicks().subscribe {
+                vm.showPointsInfoEvent.accept(Unit)
+            },
+            vm.showPointsInfoEvent.subscribe {
+              openPointsInfo()
             },
             vm.barcodeRelay.subscribe {
                 openBarcode(it)
@@ -84,6 +113,21 @@ class MainActivity : BaseVmActivity<MainActivityVm>() {
             }
         )
         vm.loadDataEvent.accept(Unit)
+    }
+
+    private fun initPoints(points: Int) {
+        if (points > 0) {
+            act_main_cl_points.visibility = View.VISIBLE
+            act_main_tv_points_value.setText(
+                resources.getQuantityString(
+                    R.plurals.points_value,
+                    points,
+                    points
+                )
+            )
+        } else {
+            act_main_cl_points.visibility = View.GONE
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -127,5 +171,9 @@ class MainActivity : BaseVmActivity<MainActivityVm>() {
 
     private fun openAllEvents() {
         startActivity(Intent(this, AllEventsActivity::class.java))
+    }
+
+    private fun openPointsInfo(){
+        startActivity(Intent(this, PointsInfoActivity::class.java))
     }
 }

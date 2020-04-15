@@ -1,141 +1,283 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintBottom_toTopOf="@id/act_main_btn_show_qr"
-    android:id="@+id/act_main_content"
-    android:layout_marginBottom="@dimen/base_margin_half"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="0dp"
-    tools:context=".presentation.allEvents.AllLessonsActivity">
+    android:layout_height="match_parent">
 
-    <com.google.android.material.appbar.AppBarLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/act_main_content"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/base_margin_half"
+        app:layout_constraintBottom_toTopOf="@id/act_main_btn_show_qr"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:context=".presentation.allEvents.AllLessonsActivity">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/act_main_toolbar"
+        <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:menu="@menu/menu_main"
-            app:title="@string/app_name"
-            app:titleTextColor="@color/colorAccent" />
-    </com.google.android.material.appbar.AppBarLayout>
+            android:layout_height="wrap_content">
 
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/act_main_swtr"
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/act_main_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:menu="@menu/menu_main"
+                app:title="@string/app_name"
+                app:titleTextColor="@color/colorAccent" />
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/act_main_swtr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/act_main_rv_tickets"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clipToPadding="false"
+                        android:paddingStart="@dimen/base_margin"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:itemCount="1"
+                        tools:listitem="@layout/item_ticket" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:visibility="gone"
+                        android:id="@+id/act_main_cl_points"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/base_margin"
+                        android:layout_marginTop="@dimen/vertical_spacing_big"
+                        android:layout_marginEnd="@dimen/base_margin"
+                        android:background="@drawable/bg_points"
+                        app:layout_constraintTop_toBottomOf="@id/act_main_rv_tickets">
+
+                        <TextView
+                            android:id="@+id/act_main_tv_points_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/base_margin"
+                            android:layout_marginTop="18dp"
+                            android:text="@string/points_title"
+                            android:textColor="@color/textColorWhiteHalf"
+                            android:textSize="12sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/act_main_tv_points_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/base_margin"
+                            android:layout_marginTop="4dp"
+                            android:paddingBottom="18dp"
+                            android:textColor="@color/textColorWhite"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/act_main_tv_points_title" />
+
+                        <ImageView
+                            android:id="@+id/act_main_iv_points_info"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="20dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/ic_info" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <TextView
+                        android:id="@+id/act_main_tv_lesson_block_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/base_margin"
+                        android:layout_marginTop="@dimen/vertical_spacing_big"
+                        android:text="@string/lessons_block_title"
+                        android:textSize="18sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/act_main_cl_points" />
+
+                    <TextView
+                        android:id="@+id/act_main_tv_lesson_block_all"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/vertical_spacing_big"
+                        android:layout_marginEnd="@dimen/base_margin"
+                        android:text="@string/see_all_items"
+                        android:textColor="@color/colorAppAccent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/act_main_cl_points" />
+
+                    <LinearLayout
+                        android:id="@+id/act_main_ll_lessons_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/act_main_tv_lesson_block_title">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/act_main_rv_lessons"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clipToPadding="false"
+                            android:paddingStart="@dimen/base_margin"
+                            android:layout_marginTop="@dimen/base_margin"
+                            android:visibility="gone"
+                            tools:itemCount="1"
+                            tools:listitem="@layout/item_lesson" />
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:visibility="visible"
+                            android:id="@+id/act_main_cl_no_lessons"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/base_margin"
+                            android:layout_marginTop="@dimen/base_margin"
+                            android:layout_marginEnd="@dimen/base_margin"
+                            android:background="@drawable/bg_no_events"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/act_main_tv_lesson_block_title">
+
+                            <ImageView
+                                android:id="@+id/act_main_iv_no_lessons"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="30dp"
+                                android:layout_marginTop="53dp"
+                                android:layout_marginBottom="53dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:srcCompat="@drawable/ic_no_events" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="24dp"
+                                android:text="@string/lessons_no_events"
+                                android:textColor="@color/textColorNoEvents"
+                                android:textSize="14sp"
+                                app:layout_constraintBottom_toBottomOf="@id/act_main_iv_no_lessons"
+                                app:layout_constraintStart_toEndOf="@id/act_main_iv_no_lessons"
+                                app:layout_constraintTop_toTopOf="@id/act_main_iv_no_lessons" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/act_main_tv_events_block_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/base_margin"
+                        android:layout_marginTop="@dimen/vertical_spacing_big"
+                        android:text="@string/events_block_title"
+                        android:textSize="18sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/act_main_ll_lessons_container" />
+
+                    <TextView
+                        android:id="@+id/act_main_tv_events_block_all"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/vertical_spacing_big"
+                        android:layout_marginEnd="@dimen/base_margin"
+                        android:text="@string/see_all_items"
+                        android:textColor="@color/colorAppAccent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/act_main_ll_lessons_container" />
+
+                    <LinearLayout
+                        android:id="@+id/act_main_ll_events_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/act_main_tv_events_block_title">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/act_main_rv_events"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clipToPadding="false"
+                            android:paddingStart="@dimen/base_margin"
+                            android:layout_marginTop="@dimen/base_margin"
+                            android:paddingBottom="@dimen/base_margin"
+                            android:visibility="gone"
+                            tools:itemCount="1"
+                            tools:listitem="@layout/item_event" />
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:visibility="visible"
+                            android:id="@+id/act_main_cl_no_events"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/base_margin"
+                            android:layout_marginTop="@dimen/base_margin"
+                            android:layout_marginEnd="@dimen/base_margin"
+                            android:background="@drawable/bg_no_events"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/act_main_tv_lesson_block_title">
+
+                            <ImageView
+                                android:id="@+id/act_main_iv_no_events"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="30dp"
+                                android:layout_marginTop="53dp"
+                                android:layout_marginBottom="53dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:srcCompat="@drawable/ic_no_events" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="24dp"
+                                android:text="@string/events_no_events"
+                                android:textColor="@color/textColorNoEvents"
+                                android:textSize="14sp"
+                                app:layout_constraintBottom_toBottomOf="@id/act_main_iv_no_events"
+                                app:layout_constraintStart_toEndOf="@id/act_main_iv_no_events"
+                                app:layout_constraintTop_toTopOf="@id/act_main_iv_no_events" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </LinearLayout>
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.core.widget.NestedScrollView>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <Button
+        android:id="@+id/act_main_btn_show_qr"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-        <androidx.core.widget.NestedScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/act_main_rv_tickets"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:itemCount="1"
-                    tools:listitem="@layout/item_ticket" />
-
-                <TextView
-                    android:id="@+id/act_main_tv_lesson_block_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/base_margin"
-                    android:layout_marginTop="@dimen/vertical_spacing_big"
-                    android:text="@string/lessons_block_title"
-                    android:textSize="18sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/act_main_rv_tickets" />
-
-                <TextView
-                    android:id="@+id/act_main_tv_lesson_block_all"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/vertical_spacing_big"
-                    android:layout_marginEnd="@dimen/base_margin"
-                    android:text="@string/see_all_items"
-                    android:textColor="@color/colorAppAccent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/act_main_rv_tickets" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/act_main_rv_lessons"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/base_margin_half"
-                    android:layout_marginTop="@dimen/base_margin"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/act_main_tv_lesson_block_title"
-                    tools:itemCount="1"
-                    tools:listitem="@layout/item_lesson" />
-
-                <TextView
-                    android:id="@+id/act_main_tv_events_block_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/base_margin"
-                    android:layout_marginTop="@dimen/vertical_spacing_big"
-                    android:text="@string/events_block_title"
-                    android:textSize="18sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/act_main_rv_lessons" />
-
-                <TextView
-                    android:id="@+id/act_main_tv_events_block_all"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/vertical_spacing_big"
-                    android:layout_marginEnd="@dimen/base_margin"
-                    android:text="@string/see_all_items"
-                    android:textColor="@color/colorAppAccent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/act_main_rv_lessons" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/act_main_rv_events"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/base_margin_half"
-                    android:layout_marginTop="@dimen/base_margin"
-                    android:paddingBottom="@dimen/base_margin"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/act_main_tv_events_block_title"
-                    tools:itemCount="1"
-                    tools:listitem="@layout/item_event" />
-
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </androidx.core.widget.NestedScrollView>
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
-    <Button
-        app:layout_constraintTop_toBottomOf="@id/act_main_content"
-        android:layout_marginBottom="@dimen/base_margin_half"
-        android:layout_marginEnd="@dimen/base_margin_half"
         android:layout_marginStart="@dimen/base_margin_half"
+        android:layout_marginEnd="@dimen/base_margin_half"
+        android:layout_marginBottom="@dimen/base_margin_half"
         android:text="Показать Штрих-код"
-        android:id="@+id/act_main_btn_show_qr"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        app:layout_constraintTop_toBottomOf="@id/act_main_content" />
 </androidx.constraintlayout.widget.ConstraintLayout>

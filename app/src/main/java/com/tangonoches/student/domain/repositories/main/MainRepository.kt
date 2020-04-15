@@ -6,6 +6,7 @@ import com.tangonoches.student.data.dto.toAllLessonModel
 import com.tangonoches.student.data.dto.toEvent
 import com.tangonoches.student.data.dto.toLesson
 import com.tangonoches.student.data.models.*
+import com.tangonoches.student.data.responces.toModel
 import com.tangonoches.student.domain.datasources.main.IMainDatasource
 import io.reactivex.Single
 
@@ -24,6 +25,9 @@ class MainRepository(
 
     override fun getTickets(barcodeId: Long): Single<List<Ticket>> =
         mainDatasource.getTickets(barcodeId).map { response -> response.data.map { item -> item.toTicket() } }
+
+    override fun getStudentInfo(barcodeId: Long): Single<StudentInfoModel> =
+        mainDatasource.getStudentsInfo(barcodeId).map { response -> response.toModel() }
 
     override fun getAllDividedLessonsList(): Single<List<BaseAllListsItem>> =
         mainDatasource.getLessonAnnounces().map { response ->

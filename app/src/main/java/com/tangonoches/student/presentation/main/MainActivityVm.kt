@@ -93,12 +93,14 @@ class MainActivityVm @Inject constructor(
     val lessonsRelay = BehaviorRelay.create<List<Lesson>>()
     val eventsRelay = BehaviorRelay.create<List<Event>>()
     val ticketsRelay = BehaviorRelay.create<List<Ticket>>()
+    val pointsRelay = BehaviorRelay.createDefault(0)
     val refreshingRelay = BehaviorRelay.create<Boolean>()
     val barcodeRelay = PublishRelay.create<Bitmap>()
 
     val loadDataEvent = PublishRelay.create<Unit>()
     val refreshDataEvent = PublishRelay.create<Unit>()
     val showBarcodeEvent = PublishRelay.create<Unit>()
+    val showPointsInfoEvent = PublishRelay.create<Unit>()
 
     override fun createBinds() {
         Log.d("APP_TAG", "MainActivityVm createBinds")
@@ -139,10 +141,10 @@ class MainActivityVm @Inject constructor(
                 { Log.d("APP_TAG", it.localizedMessage) })
         )
         binds.add(
-            mainRepository.getTickets(prefsStorage.barcodeId).subscribe(
-                { tickets ->
-                    Log.d("APP_TAG", "tickets $tickets")
-                    ticketsRelay.accept(tickets)
+            mainRepository.getStudentInfo(prefsStorage.barcodeId).subscribe(
+                { studentInfo ->
+                    ticketsRelay.accept(studentInfo.tickets)
+                    pointsRelay.accept(studentInfo.points)
                 },
                 { Log.d("APP_TAG", it.localizedMessage) })
         )
