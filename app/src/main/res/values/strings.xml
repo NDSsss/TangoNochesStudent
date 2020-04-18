@@ -36,5 +36,5 @@
     <string name="dialog_qr_btn_close">Закрыть</string>
 
     <string name="points_info_title">Информация о баллах</string>
-    <string name="points_info">Some info</string>
+    <string name="points_info">Во вермя карантина вы можете по каждому из уроков присылать видеоотчёт в чат ВКонтакте с пометкой <font fgcolor='#6a57f4'><b>#ятреню</b></font> и номером урока.\n\nЗа каждый видеоотчёт начисляется 10 баллов. Баллы суммируются.\n\nЕсли хотите - присылайте отчёт лично <a href="https://vk.com/volochkov_anton">Антону</a> или <a href="https://vk.com/juliakorobko">Юле</a>. Раз в неделю будем публиковать таблицу лидеров по количеству баллов. По итогам после карантина баллы можно будет тратить в оффлайне, а победители получат особые призы от нас</string>
 </resources>
