@@ -1,9 +1,7 @@
 package com.tangonoches.student.domain.datasources.main
 
-import com.tangonoches.student.data.responces.TicketResponse
-import com.tangonoches.student.data.responces.EventAnnouncesResponce
-import com.tangonoches.student.data.responces.LessonAnnouncesResponce
-import com.tangonoches.student.data.responces.StudentInfoResponse
+import com.tangonoches.student.data.requests.login.LoginRequest
+import com.tangonoches.student.data.responces.*
 import com.tangonoches.student.domain.services.IMainService
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -29,6 +27,11 @@ class MainDataSource(
 
     override fun getStudentsInfo(barcodeId: Long): Single<StudentInfoResponse> =
         mainService.getStudentInfo(barcodeId)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+
+    override fun login(login: String, password: String): Single<LoginResponse> =
+        mainService.login(LoginRequest(login, password))
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
 }

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "148982442109",
+    "firebase_url": "https://tangonochesstudent-stage.firebaseio.com",
+    "project_id": "tangonochesstudent-stage",
+    "storage_bucket": "tangonochesstudent-stage.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:148982442109:android:1f46db1f71c79ff8b3a914",
+        "android_client_info": {
+          "package_name": "com.tangonoches.student.debug"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "148982442109-b87vjkihqla7do2uqfftka9mmhejjsj3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDrHMj6gGqE_uXBqps1pnHhjYz6PRLP4ok"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "148982442109-b87vjkihqla7do2uqfftka9mmhejjsj3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

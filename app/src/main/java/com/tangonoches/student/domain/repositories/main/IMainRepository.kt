@@ -1,6 +1,8 @@
 package com.tangonoches.student.domain.repositories.main
 
 import com.tangonoches.student.data.models.*
+import com.tangonoches.student.data.responces.LoginResponse
+import io.reactivex.Completable
 import io.reactivex.Single
 
 interface IMainRepository {
@@ -11,4 +13,5 @@ interface IMainRepository {
 
     fun getAllDividedLessonsList(): Single<List<BaseAllListsItem>>
     fun getAllDividedEventsList(): Single<List<BaseAllListsItem>>
+    fun login(login: String, password: String): Completable
 }

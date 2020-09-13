@@ -1,9 +1,6 @@
 package com.tangonoches.student.domain.datasources.main
 
-import com.tangonoches.student.data.responces.TicketResponse
-import com.tangonoches.student.data.responces.EventAnnouncesResponce
-import com.tangonoches.student.data.responces.LessonAnnouncesResponce
-import com.tangonoches.student.data.responces.StudentInfoResponse
+import com.tangonoches.student.data.responces.*
 import io.reactivex.Single
 
 interface IMainDatasource {
@@ -11,4 +8,5 @@ interface IMainDatasource {
     fun getEventAnnounces():Single<EventAnnouncesResponce>
     fun getTickets(barcodeId:Long):Single<TicketResponse>
     fun getStudentsInfo(barcodeId: Long):Single<StudentInfoResponse>
+    fun login(login: String, password: String): Single<LoginResponse>
 }

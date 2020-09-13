@@ -1,17 +1,23 @@
 package com.tangonoches.student.presentation.main
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.jakewharton.rxbinding2.view.clicks
 import com.tangonoches.student.R
+import com.tangonoches.student.di.ComponentsHolder
 import com.tangonoches.student.presentation.allEvents.AllEventsActivity
 import com.tangonoches.student.presentation.allLessons.AllLessonsActivity
 import com.tangonoches.student.presentation.base.BaseVmActivity
@@ -20,6 +26,7 @@ import com.tangonoches.student.presentation.pointsInfo.PointsInfoActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.dialog_logout.view.*
 import kotlinx.android.synthetic.main.dialog_qr.view.*
+
 
 class MainActivity : BaseVmActivity<MainActivityVm>() {
     override fun getVmClass(): Class<MainActivityVm> = MainActivityVm::class.java
@@ -61,7 +68,7 @@ class MainActivity : BaseVmActivity<MainActivityVm>() {
         super.createVmBinds()
         vmBinds.addAll(
             vm.lessonsRelay.subscribe {
-                if(it.isNotEmpty()) {
+                if (it.isNotEmpty()) {
                     act_main_cl_no_lessons.visibility = View.GONE
                     act_main_rv_lessons.visibility = View.VISIBLE
                     act_main_tv_lesson_block_all.visibility = View.VISIBLE
@@ -73,7 +80,7 @@ class MainActivity : BaseVmActivity<MainActivityVm>() {
                 }
             },
             vm.eventsRelay.subscribe {
-                if(it.isNotEmpty()) {
+                if (it.isNotEmpty()) {
                     act_main_cl_no_events.visibility = View.GONE
                     act_main_rv_events.visibility = View.VISIBLE
                     act_main_tv_events_block_all.visibility = View.VISIBLE
@@ -94,13 +101,20 @@ class MainActivity : BaseVmActivity<MainActivityVm>() {
                 initPoints(it)
             },
             act_main_btn_show_qr.clicks().subscribe {
-                vm.showBarcodeEvent.accept(Unit)
+                //TODO: remove
+                val token = ComponentsHolder.mainComponent.providePrefsStorage().lastFcmToken
+//                val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+//                val clip = ClipData.newPlainText("label", token);
+//                clipboard.setPrimaryClip(clip);
+                copyToClipboard(this, token)
+                Toast.makeText(this, "Токен скопирован", Toast.LENGTH_SHORT).show()
+//                vm.showBarcodeEvent.accept(Unit)
             },
             act_main_iv_points_info.clicks().subscribe {
                 vm.showPointsInfoEvent.accept(Unit)
             },
             vm.showPointsInfoEvent.subscribe {
-              openPointsInfo()
+                openPointsInfo()
             },
             vm.barcodeRelay.subscribe {
                 openBarcode(it)
@@ -173,7 +187,32 @@ class MainActivity : BaseVmActivity<MainActivityVm>() {
         startActivity(Intent(this, AllEventsActivity::class.java))
     }
 
-    private fun openPointsInfo(){
+    private fun openPointsInfo() {
         startActivity(Intent(this, PointsInfoActivity::class.java))
+    }
+
+    fun copyToClipboard(
+        context: Context,
+        text: String?
+    ): Boolean {
+        return try {
+            val sdk = Build.VERSION.SDK_INT
+            if (sdk < Build.VERSION_CODES.HONEYCOMB) {
+                val clipboard = context
+                    .getSystemService(Context.CLIPBOARD_SERVICE) as android.text.ClipboardManager
+                clipboard.text = text
+            } else {
+                val clipboard = context
+                    .getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+                val clip = ClipData
+                    .newPlainText(
+                        "message", text
+                    )
+                clipboard.setPrimaryClip(clip)
+            }
+            true
+        } catch (e: Exception) {
+            false
+        }
     }
 }

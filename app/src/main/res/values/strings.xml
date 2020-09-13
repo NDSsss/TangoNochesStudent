@@ -23,6 +23,7 @@
 
     <string name="login_info">Введите код (ID) на вашей клубной карте, или отсканируйте штрихкод, нажав на кнопку справа</string>
     <string name="login_id_hint">Ваш код (ID)</string>
+    <string name="login_password_hint">Ваш пароль</string>
     <string name="login_login">Войти</string>
 
     <string name="menu_item_qr">QR</string>
