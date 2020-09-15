@@ -29,3 +29,23 @@ fun RemoteMessage.Notification.toCommonNotification(
         .setContentIntent(pendingIntent)
         .build()
 }
+
+fun createCommonNotification(
+    title: String,
+    message: String,
+    context: Context,
+    pendingIntent: PendingIntent,
+    channelId: String,
+    @ColorInt iconColor: Int
+): Notification {
+    val defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
+    return NotificationCompat.Builder(context, channelId)
+        .setSmallIcon(R.mipmap.ic_launcher)
+        .setColor(iconColor)
+        .setContentTitle(title)
+        .setContentText(message)
+        .setAutoCancel(true)
+        .setSound(defaultSoundUri)
+        .setContentIntent(pendingIntent)
+        .build()
+}

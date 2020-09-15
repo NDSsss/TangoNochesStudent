@@ -7,7 +7,17 @@ plugins {
 }
 
 android {
-    logger.warn("TEST android")
+
+    val defPath = " ${buildDir.parentFile.parentFile.path}${File.separator}apks"
+    val tryDir = File(buildDir.parentFile.parentFile, "apks")
+    logger.warn("default path $defPath")
+    val majorVersion = 1
+    val minorVersion = 0
+    val buildNumber = 0
+    val verName = "$majorVersion.$minorVersion.$buildNumber"
+//    val newDir = File(defPath)
+//    newDir.createNewFile()
+//    buildDir = tryDir
     val ext = rootProject.extra
     compileSdkVersion(29)
     buildToolsVersion("29.0.2")
@@ -15,12 +25,14 @@ android {
     defaultConfig {
         minSdkVersion(19)
         targetSdkVersion(29)
-        versionCode = 2
-        versionName = "2"
+        versionCode = 100
+        versionName = verName
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
         multiDexEnabled = true
+
     }
+    val apkName = "TangoNoches_v$verName"
 
     compileOptions {
         sourceCompatibility = ext["javaVer"] as JavaVersion
@@ -40,6 +52,7 @@ android {
     buildTypes {
         val appName = "TangoNoches"
         getByName("debug") {
+            setProperty("archivesBaseName", apkName)
             isMinifyEnabled = false
             applicationIdSuffix = ".debug"
             versionNameSuffix = "-debug"
@@ -47,12 +60,29 @@ android {
             resValue("string", "app_name_build", "$appName Stage")
         }
         getByName("release") {
+            setProperty("archivesBaseName", apkName)
             isMinifyEnabled = false
             signingConfig = signingConfigs.getByName("release")
             buildConfigField("String", "BASE_URL", "\"http://tangonoches.famedev.ru/api/\"")
             resValue("string", "app_name_build", appName)
         }
     }
+    tasks.whenTaskAdded{
+        this.doLast {
+            logger.warn("whenTaskAdded doLast ${this.name} outputs ${this.outputs.files.count()} files: ")
+            if(this.name == "packageDebug" || this.name == "packageRelease"){
+                val outFiles = this.outputs.files
+                outFiles.forEach { rrr->
+                    if(rrr.isDirectory){
+                        copyApk(rrr.listFiles(), tryDir)
+                    }
+                }
+            }
+        }
+    }
+//    tasks.whenObjectRemoved{
+//        logger.warn("whenObjectRemoved ${this.name}")
+//    }
 }
 
 dependencies {
