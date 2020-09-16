@@ -35,12 +35,13 @@ class LoginActivity : BaseVmActivity<LoginVm>() {
         vmBinds.addAll(
             vm.loginSuccess.subscribe {
                 startActivity(Intent(this, MainActivity::class.java))
+                finish()
             },
             vm.loginError.subscribe {
                 act_login_id_til.error = it
             },
             act_login_login_btn.clicks().subscribe {
-                vm.loginAction.accept(act_login_id_et.text.toString())
+                vm.loginAction.accept(act_login_id_et.text.toString() to act_login_password_et.text.toString())
             }
         )
     }
@@ -50,7 +51,7 @@ class LoginActivity : BaseVmActivity<LoginVm>() {
         if (requestCode == SCAN_REQUEST_CODE && resultCode == SCAN_SUCCESS_RESULT) {
             val dataId = data?.getLongExtra(SCAN_RESULT_ID, -1)
             if (dataId != null && dataId > 0) {
-                vm.loginAction.accept(dataId.toString())
+//                vm.loginAction.accept(dataId.toString())
             } else {
                 Toast.makeText(
                     this,

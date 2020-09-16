@@ -10,7 +10,7 @@
         android:fullBackupOnly="false"
         android:name=".App"
         android:allowBackup="false"
-        android:icon="@drawable/ic_logo"
+        android:icon="@mipmap/ic_launcher_round"
         android:label="@string/app_name_build"
         android:usesCleartextTraffic="true"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -33,6 +33,19 @@
             android:name=".presentation.loginScan.LoginScanActivity"
             android:screenOrientation="portrait" >
         </activity>
+
+        <service android:name=".domain.fcm.TokenService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+            <meta-data
+                android:name="com.google.firebase.messaging.default_notification_icon"
+                android:resource="@drawable/ic_launcher_round_bg" />
+            <meta-data
+                android:name="com.google.firebase.messaging.default_notification_color"
+                android:resource="@color/colorAccent" />
+        </service>
     </application>
 
 </manifest>

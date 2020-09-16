@@ -15,7 +15,8 @@ data class EventAnnounceDto(
     val is_active: Boolean = false,
     val name: String = "",
     val start_date: String = "",
-    val updated_at: String = ""
+    val updated_at: String = "",
+    val image: String = ""
 )
 
 fun EventAnnounceDto.toEvent(): Event {
@@ -35,7 +36,7 @@ fun EventAnnounceDto.toEvent(): Event {
         date = resultDateString,
         name = this.name,
         address = this.address,
-        photoUrl = ""
+        photoUrl = image
     )
 }
 

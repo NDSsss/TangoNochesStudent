@@ -102,7 +102,8 @@ extra.apply {
         "androidx.appcompat:appcompat:$androidxVersion",
         "androidx.core:core-ktx:$androidxVersion",
         "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion",
-        "com.google.android.material:material:$androidMaterialVersion"
+        "com.google.android.material:material:$androidMaterialVersion",
+        "com.github.bumptech.glide:glide:$glideVersion"
     ))
     set("androidxAppcompat", "androidx.appcompat:appcompat:$androidxVersion")
     set("androidxCore", "androidx.core:core-ktx:$androidxVersion")
