@@ -13,7 +13,7 @@ android {
     logger.warn("default path $defPath")
     val majorVersion = 1
     val minorVersion = 0
-    val buildNumber = 0
+    val buildNumber = 1
     val verName = "$majorVersion.$minorVersion.$buildNumber"
 //    val newDir = File(defPath)
 //    newDir.createNewFile()
@@ -25,7 +25,7 @@ android {
     defaultConfig {
         minSdkVersion(19)
         targetSdkVersion(29)
-        versionCode = 100
+        versionCode = 101
         versionName = verName
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
