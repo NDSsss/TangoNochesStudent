@@ -4,6 +4,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.tangonoches.student.R
 import com.tangonoches.student.data.models.Event
 import kotlinx.android.synthetic.main.item_event.view.*
@@ -26,6 +28,13 @@ class EventsAdapter : RecyclerView.Adapter<EventVh>() {
         holder.itemView.item_event_tv_date.text = event.date
         holder.itemView.item_event_tv_name.text = event.name
         holder.itemView.item_event_tv_address.text = event.address
+        holder.itemView.item_event_bg_photo.apply {
+            Glide.with(this)
+                .load(event.photoUrl)
+                .diskCacheStrategy(DiskCacheStrategy.DATA)
+                .error(R.drawable.bg_event_photo)
+                .into(this)
+        }
     }
 }
 

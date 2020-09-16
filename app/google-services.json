@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "148982442109",
-    "firebase_url": "https://tangonochesstudent-stage.firebaseio.com",
-    "project_id": "tangonochesstudent-stage",
-    "storage_bucket": "tangonochesstudent-stage.appspot.com"
+    "project_number": "656795736873",
+    "firebase_url": "https://tangonochesstudent.firebaseio.com",
+    "project_id": "tangonochesstudent",
+    "storage_bucket": "tangonochesstudent.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:148982442109:android:1f46db1f71c79ff8b3a914",
+        "mobilesdk_app_id": "1:656795736873:android:02e5c35a556b8f45a87538",
         "android_client_info": {
-          "package_name": "com.tangonoches.student.debug"
+          "package_name": "com.tangonoches.student"
         }
       },
       "oauth_client": [
         {
-          "client_id": "148982442109-b87vjkihqla7do2uqfftka9mmhejjsj3.apps.googleusercontent.com",
+          "client_id": "656795736873-5pbvpbf7dnqd40icn7k27kue35babddf.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDrHMj6gGqE_uXBqps1pnHhjYz6PRLP4ok"
+          "current_key": "AIzaSyDF4YI-MJNk4X9B5yfa5uzPR7l7zRj0iFE"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "148982442109-b87vjkihqla7do2uqfftka9mmhejjsj3.apps.googleusercontent.com",
+              "client_id": "656795736873-5pbvpbf7dnqd40icn7k27kue35babddf.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

@@ -15,6 +15,7 @@
         android:layout_height="match_parent">
 
         <androidx.appcompat.widget.AppCompatImageView
+            android:scaleType="centerCrop"
             android:id="@+id/item_event_bg_photo"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

@@ -80,9 +80,6 @@ android {
             }
         }
     }
-//    tasks.whenObjectRemoved{
-//        logger.warn("whenObjectRemoved ${this.name}")
-//    }
 }
 
 dependencies {

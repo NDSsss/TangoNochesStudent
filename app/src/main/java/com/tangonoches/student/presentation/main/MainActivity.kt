@@ -102,13 +102,13 @@ class MainActivity : BaseVmActivity<MainActivityVm>() {
             },
             act_main_btn_show_qr.clicks().subscribe {
                 //TODO: remove
-                val token = ComponentsHolder.mainComponent.providePrefsStorage().lastFcmToken
-//                val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-//                val clip = ClipData.newPlainText("label", token);
-//                clipboard.setPrimaryClip(clip);
-                copyToClipboard(this, token)
-                Toast.makeText(this, "Токен скопирован", Toast.LENGTH_SHORT).show()
-//                vm.showBarcodeEvent.accept(Unit)
+//                val token = ComponentsHolder.mainComponent.providePrefsStorage().lastFcmToken
+////                val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+////                val clip = ClipData.newPlainText("label", token);
+////                clipboard.setPrimaryClip(clip);
+//                copyToClipboard(this, token)
+//                Toast.makeText(this, "Токен скопирован", Toast.LENGTH_SHORT).show()
+                vm.showBarcodeEvent.accept(Unit)
             },
             act_main_iv_points_info.clicks().subscribe {
                 vm.showPointsInfoEvent.accept(Unit)
